@@ -29,7 +29,10 @@ st.dataframe(fruits_to_show)
 
 st.header("Fruityvice Fruit Advice!")
 
-fruityvice_response = rq.get("https://fruityvice.com/api/fruit/watermelon")
+fruit_choice = st.text_input('What fruit would you like information about?','Kiwi')
+st.write('The user entered ', fruit_choice)
+
+fruityvice_response = rq.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 
 # write your own comment -what does the next line do? 
 fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
