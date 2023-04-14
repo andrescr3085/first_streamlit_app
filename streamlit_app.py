@@ -41,12 +41,12 @@ fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 st.dataframe(fruityvice_normalized)
 
 
-fruit_choice2 = st.text_input('What fruit would you like information about?','jackfruit')
-st.write('Thanks for adding ',fruit_choice2)
+add_my_fruit = st.text_input('What fruit would you like information about?','jackfruit')
+st.write('Thanks for adding ',add_my_fruit)
 
 my_cnx = snowflake.connector.connect(**st.secrets["snowflake"])
 my_cur = my_cnx.cursor()
-my_cur.execute("select * from fruit_load_list where ")
+my_cur.execute("select * from fruit_load_list")
 my_data_rows = my_cur.fetchall()
 st.header("The fruit load list contains:")
 st.dataframe(my_data_rows)
